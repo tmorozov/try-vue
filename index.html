@@ -6,5 +6,23 @@
   </head>
   <body>
 
+    <div id="card">
+      <header>
+        {{ title }}
+      </header>
+      <div>
+        <input id="itemForm" v-on:keypress.enter="addItem"/>
+        <button v-on:click="addItem">Add Item</button>
+      </div>
+      <ul>
+        <li v-for="(item, index) in items">
+          <button v-on:click="removeItem(index)">X</button>
+          {{ item.text }}
+        </li>
+      </ul>
+    </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="js/app.js"></script>
   </body>
 </html>
