@@ -33,15 +33,22 @@
         <input id="itemForm" v-model="input" v-on:keypress.enter="addItem"/>
         <button v-on:click="addItem">{{buttonText}}</button>
       </div>
-      <ul>
-        <li v-for="(item, index) in items">
-          <button v-on:click="removeItem(index)">X</button>
-          <a :href="item.text | lowercase | url">{{ item.text | capitalise}}</a>
-        </li>
-      </ul>
-      <ul>
-        <li>Total {{totalRows}}</li>
-      </ul>
+
+      <template v-if="items.length">
+        <h4>
+          Item list
+        </h4>
+        <ul>
+          <li v-for="(item, index) in items">
+            <button v-on:click="removeItem(index)">X</button>
+            <a :href="item.text | lowercase | url">{{ item.text | capitalise}}</a>
+          </li>
+        </ul>
+        <ul>
+          <li>Total {{totalRows}}</li>
+        </ul>
+      </template>
+      <p v-else>No items in list</p>
 
       <form>
         <label>
