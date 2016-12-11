@@ -1,8 +1,10 @@
-/*globals Vue */
+/*globals Vue, _ */
 var card = new Vue({
   el: '#card',
   data: {
     title: 'Title',
+    input: '',
+    buttonText: 'Add Item',
     totalRows: 0,
     items: [{
       text: 'star wars'
@@ -12,14 +14,18 @@ var card = new Vue({
       text: 'gravity'
     }]
   },
+  watch: {
+    input: _.debounce(function () {
+      this.buttonText = this.input !== '' ? 'Add ' + this.input : 'Add Item'
+    }, 250)
+  },
   methods: {
     addItem: function () {
-      var input = document.getElementById('itemForm')
-      if (input.value !== '') {
+      if (this.input !== '') {
         this.items.push({
-          text: input.value
+          text: this.input
         })
-        input.value = ''
+        this.input = ''
       }
     },
     removeItem: function (index) {

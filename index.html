@@ -11,8 +11,8 @@
         {{ title }}
       </header>
       <div>
-        <input id="itemForm" v-on:keypress.enter="addItem"/>
-        <button v-on:click="addItem">Add Item</button>
+        <input id="itemForm" v-model="input" v-on:keypress.enter="addItem"/>
+        <button v-on:click="addItem">{{buttonText}}</button>
       </div>
       <ul>
         <li v-for="(item, index) in items">
@@ -25,7 +25,8 @@
       </ul>
     </div>
 
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="3party/vue.js"></script>
+    <script src="3party/lodash.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
