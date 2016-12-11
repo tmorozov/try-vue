@@ -29,12 +29,12 @@
       <header>
         {{ title }}
       </header>
-      <div>
-        <input id="itemForm" v-model="input" v-on:keypress.enter="addItem"/>
-        <button v-on:click="addItem">{{buttonText}}</button>
-      </div>
+      <form v-on:submit.prevent="addItem">
+        <input v-model="input"/>
+        <button>{{buttonText}}</button>
+      </form>
 
-      <template v-if="items.length">
+      <template v-if="items.length > 0">
         <h4>
           Item list
         </h4>
@@ -50,6 +50,7 @@
       </template>
       <p v-else>No items in list</p>
 
+      <hr>
       <form>
         <label>
           <input type="checkbox" v-model="isLarge"> Large

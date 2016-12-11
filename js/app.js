@@ -22,6 +22,7 @@ var card = new Vue({
   },
   methods: {
     addItem: function () {
+      console.log(this.input)
       if (this.input !== '') {
         this.items.push({
           text: this.input
