@@ -3,6 +3,25 @@
   <head>
     <meta charset="utf-8">
     <title>try Vue.js</title>
+
+    <style media="screen">
+      .box {
+        border: 1px solid green;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .large {
+        width: 40vw;
+        height: 40vh;
+        margin: 40px 30vw;
+      }
+      .small {
+        width: 20vw;
+        height: 10vh;
+        margin: 20px 40vw;
+      }
+    </style>
   </head>
   <body>
 
@@ -23,6 +42,18 @@
       <ul>
         <li>Total {{totalRows}}</li>
       </ul>
+
+      <form>
+        <label>
+          <input type="checkbox" v-model="isLarge"> Large
+        </label>
+      </form>
+
+      <div class='box'
+        :class="isLarge ? 'large' : 'small'">
+        Extra Div
+      </div>
+
     </div>
 
     <script src="3party/vue.js"></script>

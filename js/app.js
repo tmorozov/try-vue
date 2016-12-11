@@ -12,7 +12,8 @@ var card = new Vue({
       text: 'propulsion'
     }, {
       text: 'gravity'
-    }]
+    }],
+    isLarge: false
   },
   watch: {
     input: _.debounce(function () {
