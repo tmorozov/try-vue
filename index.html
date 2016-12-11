@@ -49,6 +49,14 @@
         </ul>
       </template>
       <p v-else>No items in list</p>
+      <hr>
+      <template v-for="item in items">
+        <label>
+          <input type="radio" :value="item.text" v-model="chosenItem">
+          {{item.text}}
+        </label>
+      </template><br>
+      <span>Selected: {{chosenItem}}</span>
 
       <hr>
       <form>

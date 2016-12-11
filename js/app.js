@@ -13,6 +13,7 @@ var card = new Vue({
     }, {
       text: 'gravity'
     }],
+    chosenItem: '',
     isLarge: false
   },
   watch: {
