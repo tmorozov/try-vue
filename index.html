@@ -39,15 +39,16 @@
           Item list
         </h4>
         <ul>
-          <li v-for="(item, index) in items">
-            <button v-on:click="removeItem(index)">X</button>
-            <a :href="item.text | lowercase | url">{{ item.text | capitalise}}</a>
-          </li>
+          <list-item v-for="(item, index) in items"
+            :text="item.text"
+            :index="index"
+            v-on:remove-item="removeItem"></list-item>
         </ul>
         <ul>
           <li>Total {{totalRows}}</li>
         </ul>
       </template>
+      
       <p v-else>No items in list</p>
       <hr>
       <template v-for="item in items">
@@ -71,6 +72,13 @@
       </div>
 
     </div>
+
+    <script type="text/x-template" id="list-item">
+      <li>
+        <button v-on:click="removeItem()">X</button>
+        <a :href="text | lowercase | url">{{ text | capitalise}}</a>
+      </li>
+    </script>
 
     <script src="3party/vue.js"></script>
     <script src="3party/lodash.js"></script>

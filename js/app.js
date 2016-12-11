@@ -35,29 +35,43 @@ var card = new Vue({
       this.items.splice(index, 1)
     }
   },
-  filters: {
-    capitalise: function (value) {
-      if (!value) return ''
-      value = value.toString()
-
-      return value.charAt(0).toUpperCase() + value.slice(1)
-    },
-    lowercase: function (value) {
-      if (!value) return ''
-      value = value.toString()
-
-      return value.toLowerCase()
-    },
-    url: function (value) {
-      if (!value) return ''
-      value = value.toString()
-
-      return 'https://en.wikipedia.org/wiki/' + value
-    }
-  },
   computed: {
     totalRows: function () {
       return this.items.length
+    }
+  },
+  components: {
+    'list-item': {
+      template: '#list-item',
+      props: ['text', 'index'],
+      data: function () {
+        return {}
+      },
+      methods: {
+        removeItem: function () {
+          this.$emit('remove-item', this.index)
+        }
+      },
+      filters: {
+        capitalise: function (value) {
+          if (!value) return ''
+          value = value.toString()
+
+          return value.charAt(0).toUpperCase() + value.slice(1)
+        },
+        lowercase: function (value) {
+          if (!value) return ''
+          value = value.toString()
+
+          return value.toLowerCase()
+        },
+        url: function (value) {
+          if (!value) return ''
+          value = value.toString()
+
+          return 'https://en.wikipedia.org/wiki/' + value
+        }
+      }
     }
   }
 })
